@@ -4,7 +4,6 @@
 import Chart from "./Chart.svelte"
 	import Placeholder from './Placeholder.svelte'
 	import Stats from "./Stats.svelte"
-	// import TimeseriesChart from "./TimeseriesChart.svelte"
 	import Bar from "./Chart.svelte"
 
 	let loading = true, 
