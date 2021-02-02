@@ -2,7 +2,7 @@
     import { Bar } from "svelte-chartjs";
     import { Card } from "sveltestrap";
     import moment from "moment";
-    import {parse, stringify} from 'flatted'
+    import { stringify } from 'flatted'
 
     export let data
     let chartData, chartOptions
@@ -39,7 +39,8 @@
             ],
         })
 
-    chartOptions = {
+    $: data && (chartOptions = (type) => {
+        return {
         responsive: true,
         maintainAspectRatio: false,
         layout: {
@@ -86,14 +87,19 @@
             ],
         },
     }
-
-    $: chartData && console.log(`CHARTDATA: ${JSON.stringify(chartData)}`)
+    })
+    // $: chartData && console.log(`CHARTDATA: ${JSON.stringify(chartData)}`)
 </script>
 
-<Card>
-    <div class="card-header">iLibrary sales over time</div>
-    <div class="card-body" style="height: 531px">
-        <Bar data={chartData} options={chartOptions} />
-    </div>
+<div class="mt-4">
+    <h3>All-time by month</h3>
 
-</Card>
+    <Card class="mt-4 border border-secondary">
+        <div class="card-header">iLibrary sales over time</div>
+        <div class="card-body" style="height: 354px">
+            
+            <Bar data={chartData} options={chartOptions('bar')}/>
+
+        </div>
+    </Card>
+</div>

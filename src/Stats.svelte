@@ -1,23 +1,29 @@
 <script>
-    import Stat from "./Stat.svelte"
-    import ComparativeStat from "./ComparativeStat.svelte"
-    import { Row } from "sveltestrap"
-    import dayjs from 'dayjs'
+    import Stat from "./Stat.svelte";
+    import ComparativeStat from "./ComparativeStat.svelte";
+    import { Row, Col } from "sveltestrap";
+    import dayjs from "dayjs";
 
-    export let stats
+    export let stats;
 
-    $: stats && console.log(`First date: ${JSON.stringify(stats.firstAndLastDates)}`)
+    $: stats &&
+        console.log(`First date: ${JSON.stringify(stats.firstAndLastDates)}`);
 </script>
 
-<h3 class='mt-3'>Some sales numbers</h3>
-<Row>
-    {#await stats then stats}
-        <Stat header={`iLibrary e-commerce`} 
+{#await stats then stats}
+    <Col>
+        <Row>
+            <Col>
+                <h3 class="mt-3">Some sales numbers</h3>
+            </Col>
+        </Row>
+        <Stat
+            header={`iLibrary e-commerce`}
             data={stats.overallTotal}
-            legend={`Total sales since ${dayjs(stats.firstAndLastDates.firstDate).format('ddd, D MMM YYYY')}`}
+            legend={`Total sales since ${dayjs(
+                stats.firstAndLastDates.firstDate
+            ).format("ddd, D MMM YYYY")}`}
         />
-        <ComparativeStat header={'Latest sales'}
-            data={stats.twoDays}
-        />
-    {/await}
-</Row>
+        <ComparativeStat header={"Latest sales"} data={stats.twoDays} />
+    </Col>
+{/await}
