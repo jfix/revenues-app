@@ -13,7 +13,7 @@
 <Row>
     {#await stats then stats}
         <Stat header={`iLibrary e-commerce`} 
-            data={`${parseFloat(stats.overallTotal).toLocaleString()} €`}
+            data={stats.overallTotal}
             legend={`Total sales since ${dayjs(stats.firstAndLastDates.firstDate).format('ddd, D MMM YYYY')}`}
         />
         <ComparativeStat header={'Latest sales'}

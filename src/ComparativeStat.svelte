@@ -1,5 +1,5 @@
 <script>
-    import { Row, Col, Card, Icon } from "sveltestrap"
+    import { Row, Col, Card, Icon, Badge, Popover } from "sveltestrap"
     import dayjs from "dayjs"
 
     export let data, header
@@ -31,20 +31,25 @@
 
 <Col xs="12" md="6" lg="6" class="mb-4">
     <Card class="text-white bg-{color}">
-        <div class="card-header">{header}</div>
+        <div class="card-header">{header}
+            <Badge pill color="light" id="help1" class="ml-1" >?</Badge>
+            <Popover target="help1" trigger="hover" placement="top">
+                <div>Hello World!</div>
+            </Popover>
+        </div>
         <div class="card-body">
             <Row>
                 <Col xs="6" class="align-self-end">
-                    <h4 class="text-nowrap card-title text-center bignumber-header">{latestSaleValue} €</h4>
+                    <h4 class="text-nowrap card-title text-center bignumber-header">{Math.round(latestSaleValue)} €</h4>
                     <p class="text-center card-text">{latestSaleDate}</p>
                 </Col>
-                <Col xs="2" md="6">
+                <Col xs="2" md="6" lg="2">
                     <div class="trend-arrow text-center">
                         <Icon name={icon}></Icon>
                     </div>
                 </Col>
                 <Col xs="4" lg="4" class="align-self-end d-md-none d-lg-block">
-                    <h5 class="text-nowrap card-title text-center">{previousSaleValue} €</h5>
+                    <h5 class="text-nowrap card-title text-center">{Math.round(previousSaleValue)} €</h5>
                     <p class="text-center card-text">{previousSaleDate}</p>
                 </Col>    
             </Row>
@@ -60,5 +65,9 @@
     .trend-arrow {
         font-size: 300%;
         font-weight: bold;
+    }
+    h5 {
+        font-weight: bold;
+        font-size: 200%;
     }
 </style>
