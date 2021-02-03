@@ -4,6 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import { config } from 'dotenv';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -47,6 +49,18 @@ export default {
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
 
+		// plugin used in conjunction with dotenv to replace
+		// environment variables. see here for the how-to:
+		// https://medium.com/dev-cafe/how-to-setup-env-variables-to-your-svelte-js-app-c1579430f032
+		replace({
+			process: JSON.stringify({
+				env: {
+					isProd: production,
+					REVENUES_API_URL: process.env.REVENUES_API_URL,
+					...config().parsed
+				}
+			}),
+		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -

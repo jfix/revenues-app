@@ -5,7 +5,7 @@
 	import Stats from "./Stats.svelte";
 	import BarChart from "./BarChart.svelte"
 	import LineChart from "./LineChart.svelte"
-
+	
 	let loading = true,
 		statsResults = {},
 		overallTotal = 0,
@@ -14,10 +14,10 @@
 		monthlyTotals = {},
 		lastQuarter = {};
 
-	const PRODUCTION = false;
+	const PRODUCTION = process.env.isProd;
 
 	onMount(async () => {
-		const res = await fetch(`http://localhost:3000/revenues`);
+		const res = await fetch(process.env.REVENUES_API_URL);
 		statsResults = await res.json();
 		monthlyTotals = statsResults.monthlyTotals
 		lastQuarter = statsResults.lastQuarter
