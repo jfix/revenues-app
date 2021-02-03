@@ -20,24 +20,6 @@
         console.log(`DATA: ${JSON.stringify(outData)}`)
         return outData
     }
-    const prepareDataValues = (inData) => {
-        let outData = []
-        inData.forEach(o => {
-            outData = [...outData, Object.values(o)[0]]
-        }); {
-        }
-        return outData;
-    };
-
-    const prepareDataLabels = (inData) => {
-        let outData = []
-        inData.forEach(o => {
-            // console.log(`DATE: ${Object.keys(o)[0]} - ${dayjs(Object.keys(o)[0], "YYYY-MM-DD")}`)
-            outData = [...outData, dayjs(Object.keys(o)[0], "YYYY-MM-DD")]
-        })
-        console.log(`OUTDATA: ${JSON.stringify(outData)}`)
-        return outData
-    };
 
     $: data &&
         (chartData = {
@@ -47,10 +29,10 @@
                     label: "Monthly sales (in EUR)",
                     data: prepareData(data),
                     borderColor: "#3498db",
-                    // barPercentage: 0.5,
-                    // categoryPercentage: 1.0,
+                    pointRadius: 2,
+                    pointHoverRadius: 4,
                     borderWidth: 2,
-                    // borderColor: "rgba(255, 134, 159, 1)",
+                    lineTension: 0,
                 },
             ],
         })
@@ -60,7 +42,7 @@
         responsive: true,
         maintainAspectRatio: false,
         layout: {
-            padding: 10
+            padding: 5
         },
         tooltips: {
             callbacks: {
@@ -76,13 +58,13 @@
                 {
                     type: "time",
                     offset: true,
-                    // time: {
-                    //     unit: "day",
-                    //     tooltipFormat: "D MMMM YYYY",
-                    //     displayFormats: {
-                    //         day: "D MMM [']YY",
-                    //     },
-                    // },
+                    time: {
+                        unit: "day",
+                        tooltipFormat: "ddd, D MMMM YYYY",
+                        displayFormats: {
+                            day: "D MMM",
+                        },
+                    },
                     gridLines: {
                         display: true,
                         color: "rgba(0, 0, 0, 0.1)",
