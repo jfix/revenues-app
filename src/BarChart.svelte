@@ -9,17 +9,17 @@
 
     const prepareDataValues = (inData) => {
         let outData = []
-        for (const value of Object.values(inData)) {
-            outData = [...outData, value]
-        }
+        inData.forEach(o => {
+            outData = [...outData, Object.values(o)[0]]
+        })
         return outData;
     };
 
     const prepareDataLabels = (inData) => {
         let outData = []
-        for (const date of Object.keys(inData)) {
-            outData = [...outData, moment(date, "YYYY-MM")]
-        }
+        inData.forEach(o => {
+            outData = [...outData, moment(Object.keys(o)[0], "YYYY-MM")]
+        })
         return outData
     };
 
@@ -31,10 +31,6 @@
                     label: "Monthly sales (in EUR)",
                     data: prepareDataValues(data),
                     backgroundColor: "#3498db",
-                    // barPercentage: 0.5,
-                    // categoryPercentage: 1.0,
-                    // borderWidth: 2,
-                    // borderColor: "rgba(255, 134, 159, 1)",
                 },
             ],
         })
@@ -44,7 +40,7 @@
         responsive: true,
         maintainAspectRatio: false,
         layout: {
-            padding: 10
+            padding: 5
         },
         tooltips: {
             callbacks: {
