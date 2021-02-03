@@ -45,10 +45,7 @@
         tooltips: {
             callbacks: {
                 label: function(tooltipItem, data) {
-                    console.log(`TTT: ${stringify(tooltipItem.yLabel)}`)
-                    let label = ` ${Math.round(parseFloat(tooltipItem.yLabel)).toLocaleString()} €`
-                    // if (label) la
-                    return label
+                    return ` ${Math.round(parseFloat(tooltipItem.yLabel)).toLocaleString()} €`
                 }
             }
         },
@@ -84,7 +81,6 @@
         },
     }
     })
-    // $: chartData && console.log(`CHARTDATA: ${JSON.stringify(chartData)}`)
 </script>
 
 <div class="mt-4">
@@ -94,7 +90,7 @@
         <div class="card-header">iLibrary sales over time</div>
         <div class="card-body" style="height: 354px">
             
-            <Bar data={chartData} options={chartOptions('bar')}/>
+            <Bar data={chartData} options={chartOptions()}/>
 
         </div>
     </Card>

@@ -1,6 +1,6 @@
 <script>
     import { Line } from "svelte-chartjs";
-    import { Card } from "sveltestrap";
+    import { Row, Col, Card } from "sveltestrap";
     import moment from "moment";
 
     import { stringify } from 'flatted'
@@ -17,7 +17,6 @@
                 y: Object.values(o)[0]
             }]
         })
-        console.log(`DATA: ${JSON.stringify(outData)}`)
         return outData
     }
 
@@ -47,9 +46,7 @@
         tooltips: {
             callbacks: {
                 label: function(tooltipItem) {
-                    console.log(`TTT: ${stringify(tooltipItem.yLabel)}`)
-                    let label = ` ${Math.round(parseFloat(tooltipItem.yLabel)).toLocaleString()} €`
-                    return label
+                    return ` ${Math.round(parseFloat(tooltipItem.yLabel)).toLocaleString()} €`
                 }
             }
         },
@@ -85,11 +82,14 @@
         },
     }
     })
-    // $: chartData && console.log(`CHARTDATA: ${JSON.stringify(chartData)}`)
 </script>
 
-<div class="mt-4">
-    <h3>Last 30 days</h3>
+<div>
+    <Row>
+        <Col>
+            <h3 class="mt-3">Last 30 days</h3>
+        </Col>
+    </Row>
     <Card class="mt-4 border border-secondary">
         <div class="card-header">iLibrary sales over time</div>
         <div class="card-body" style="height: 329px">

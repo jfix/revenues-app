@@ -5,16 +5,13 @@
     import dayjs from "dayjs";
 
     export let stats;
-
-    $: stats &&
-        console.log(`First date: ${JSON.stringify(stats.firstAndLastDates)}`);
 </script>
 
 {#await stats then stats}
     <Col>
         <Row>
             <Col>
-                <h3 class="mt-3">Some sales numbers</h3>
+                <h3 class="mt-3">Numbers and trends</h3>
             </Col>
         </Row>
         <Stat

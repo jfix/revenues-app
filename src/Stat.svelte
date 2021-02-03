@@ -11,10 +11,10 @@
     <div class="card-header">
         {header}
         <Badge id="help2" pill href="#" color="light" class="ml-1">?</Badge>
-        <Tooltip placement="bottom" target="help2">
+        <Tooltip placement="top" target="help2">
             <div>
                 The displayed amount below has been rounded up to the nearest
-                Euro. The precise amount is <strong>{data}</strong> €.
+                Euro. The precise amount is <strong>{parseFloat(data).toFixed(2).toLocaleString()}</strong> €.
             </div>
         </Tooltip>
     </div>

@@ -1,5 +1,5 @@
 <script>
-    import { Row, Col, Card, Icon, Badge, Popover } from "sveltestrap";
+    import { Row, Col, Card, Icon, Badge, Tooltip } from "sveltestrap";
     import dayjs from "dayjs";
     import relativeTime from "dayjs/plugin/relativeTime";
 
@@ -15,7 +15,6 @@
 
     const trend = (today, yesterday) => {
         const diff = today - yesterday;
-        console.log(`diff of ${today} - ${yesterday} = ${diff}`);
         if (diff < 0) {
             // worse
             return ["danger", "arrow-down-right"];
@@ -43,10 +42,10 @@
 <Card class="text-white bg-{color} mt-4">
     <div class="card-header">
         {header}
-        <Badge pill color="light" id="help1" class="ml-1">?</Badge>
-        <Popover target="help1" trigger="hover" placement="top">
-            <div>Hello World!</div>
-        </Popover>
+        <Badge pill href="#" color="light" id="help1" class="ml-1">?</Badge>
+        <Tooltip target="help1" trigger="hover" placement="top">
+            <div>The displayed amounts have been rounded to the nearest Euro.</div>
+        </Tooltip>
     </div>
     <div class="card-body">
         <Row>

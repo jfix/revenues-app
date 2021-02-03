@@ -24,14 +24,12 @@
 		// let { firstAndLastDates, overallTotal, twoDays, monthlyTotals, lastQuarter } = statsResults
 		loading = false;
 	});
-
-	$: console.log(`Loading status: ${loading}`);
 </script>
 
 <Navbar class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<NavbarBrand>
 		<img src="./oecd-logo.png" width="30" height="30" alt="OECD logo" />
-		Money money money
+		"Money money money" <small class="pl-2 text-smaller text-muted">&mdash; you know ... from that ABBA song</small>
 	</NavbarBrand>
 </Navbar>
 
@@ -55,7 +53,7 @@
 	</main>
 	<footer class="text-muted mt-8">
 		<Container>
-			<p>This is the page footer</p>
+			<p class="text-right">This is not an official project. Ask for new features and support at your own peril! 😉</p>
 		</Container>
 	</footer>
 </Container>
