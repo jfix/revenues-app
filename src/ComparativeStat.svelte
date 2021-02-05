@@ -11,21 +11,26 @@
         latestSaleDate,
         latestSaleValue,
         previousSaleDate,
-        previousSaleValue;
+        previousSaleValue
 
     const trend = (today, yesterday) => {
-        const diff = today - yesterday;
+        const diff = today - yesterday
+        const threshold = 5
+        const max = Math.max(today, yesterday) 
+        const min = Math.min(today, yesterday) 
+        const percentage = (max - min) * 100 / max
+        if (!(percentage >= threshold)) {
+            // not noteworthy difference
+            return ["warning", "arrow-right", percentage]
+        }
         if (diff < 0) {
             // worse
-            return ["danger", "arrow-down-right"];
-        } else if (diff > 0) {
-            // better
-            return ["success", "arrow-up-right"];
+            return ["danger", "arrow-down-right", percentage]
         } else {
-            // same
-            return ["warning", "arrow-right"];
+            // better
+            return ["success", "arrow-up-right", percentage]
         }
-    };
+    }
 
     $: data &&
         ((latestSaleValue = Object.values(data[1])[0]),
