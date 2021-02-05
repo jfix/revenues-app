@@ -25,7 +25,7 @@
             // labels: prepareDataLabels(data),
             datasets: [
                 {
-                    label: "Monthly sales (in EUR)",
+                    label: "Daily sales (in EUR)",
                     data: prepareData(data),
                     borderColor: "#3498db",
                     pointRadius: 2,
