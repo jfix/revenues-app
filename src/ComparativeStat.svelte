@@ -44,7 +44,7 @@
     $: data && ([color, icon] = trend(latestSaleValue, previousSaleValue));
 </script>
 
-<Card class="text-white bg-{color} mt-4">
+<Card class="text-white bg-dark border-secondary {color} mt-4">
     <div class="card-header">
         {header}
         <Badge pill href="#" color="light" id="help1" class="ml-1">?</Badge>
@@ -54,22 +54,22 @@
     </div>
     <div class="card-body">
         <Row>
-            <Col xs="6" class="align-self-end">
-                <h4 class="text-nowrap card-title text-center bignumber-header">
-                    {Math.round(latestSaleValue)} €
-                </h4>
-                <p class="text-center card-text">{latestSaleDate}</p>
-            </Col>
-            <Col xs="2" md="6" lg="2">
-                <div class="trend-arrow text-center">
-                    <Icon name={icon} />
-                </div>
-            </Col>
             <Col xs="4" lg="4" class="align-self-end d-md-none d-lg-block">
                 <h5 class="text-nowrap card-title text-center">
                     {Math.round(previousSaleValue)} €
                 </h5>
-                <p class="text-center card-text">{previousSaleDate}</p>
+                <p class="text-center mb-0"><small class="text-muted">{previousSaleDate}</small></p>
+            </Col>
+            <Col xs="2" md="6" lg="2">
+                <div class="trend-arrow text-center text-{color}">
+                    <Icon name={icon} />
+                </div>
+            </Col>
+            <Col xs="6" class="align-self-end">
+                <h4 class="text-nowrap card-title text-center bignumber-header text-{color}">
+                    {Math.round(latestSaleValue)} €
+                </h4>
+                <p class="text-center mb-0"><small class="text-muted">{latestSaleDate}</small></p>
             </Col>
         </Row>
     </div>

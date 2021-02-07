@@ -92,7 +92,7 @@
     </Row>
     <Card class="mt-4 border border-secondary">
         <div class="card-header">iLibrary sales over time</div>
-        <div class="card-body" style="height: 329px">
+        <div class="card-body" style="height: 333px">
             <Line data={chartData} options={chartOptions()}/>
         </div>
     </Card>
