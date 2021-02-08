@@ -49,7 +49,8 @@
         {header}
         <Badge pill href="#" color="light" id="help1" class="ml-1">?</Badge>
         <Tooltip target="help1" trigger="hover" placement="top">
-            <div>The displayed amounts have been rounded to the nearest Euro.</div>
+            <div class="text-left">The trend indicator considers only differences of <strong>more than five percent</strong> 
+                as significant. Smaller changes are considered negligable.</div>
         </Tooltip>
     </div>
     <div class="card-body">
