@@ -56,7 +56,7 @@
         <Row>
             <Col xs="4" lg="4" class="align-self-end d-md-none d-lg-block">
                 <h5 class="text-nowrap card-title text-center">
-                    {Math.round(previousSaleValue)} €
+                    {Math.round(previousSaleValue).toLocaleString()} €
                 </h5>
                 <p class="text-center mb-0"><small class="text-muted">{previousSaleDate}</small></p>
             </Col>
@@ -67,7 +67,7 @@
             </Col>
             <Col xs="6" class="align-self-end">
                 <h4 class="text-nowrap card-title text-center bignumber-header text-{color}">
-                    {Math.round(latestSaleValue)} €
+                    {Math.round(latestSaleValue).toLocaleString()} €
                 </h4>
                 <p class="text-center mb-0"><small class="text-muted">{latestSaleDate}</small></p>
             </Col>
@@ -76,11 +76,7 @@
 </Card>
 
 <style>
-    .bignumber-header {
-        font-size: 300%;
-        font-weight: bold;
-    }
-    .trend-arrow {
+    .bignumber-header, .trend-arrow {
         font-size: 300%;
         font-weight: bold;
     }
