@@ -15,14 +15,14 @@
     </div>
     <div class="card-body">
         <Row>
-            <Col xs="12" lg="4" md="12" class="align-self-end d-lg-block divider">
+            <Col xs="12" lg="4" md="12" class="align-self-end d-lg-block">
                 <p class="text-center card-text mb-0">Max</p>
                 <h5 class="text-nowrap card-title text-center">
                     {Math.round(data.max.revenue).toLocaleString()} €
                 </h5>
                 <p class="text-center mb-0"><small class="text-muted">{dayjs(data.max.date).format('ddd, D MMM YYYY')}</small></p>
             </Col>
-            <Col xs="12" md="12" lg="4" class="d-lg-block divider">
+            <Col xs="12" md="12" lg="4" class="d-lg-block">
                 <p class="text-center card-text mb-0">Average</p>
                 <h5 class="text-nowrap card-title text-center">
                     {Math.round(data.avg).toLocaleString()} €
@@ -40,19 +40,12 @@
 </Card>
 
 <style>
-    .bignumber-header {
-        font-size: 300%;
-        font-weight: bold;
-    }
-    .trend-arrow {
+    .bignumber-header, .trend-arrow {
         font-size: 300%;
         font-weight: bold;
     }
     h5 {
         font-weight: bold;
         font-size: 200%;
-    }
-    .divider {
-        border-right: 1px dashed white;
     }
 </style>
