@@ -21,7 +21,7 @@
         const percentage = (max - min) * 100 / max
         if (!(percentage >= threshold)) {
             // not noteworthy difference
-            return ["warning", "arrow-right", percentage]
+            return ["info", "arrow-right", percentage]
         }
         if (diff < 0) {
             // worse
