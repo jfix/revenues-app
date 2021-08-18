@@ -19,10 +19,7 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                script {
-                    dev scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
-                    echo "${scmVars.GIT_COMMIT}"
-                }
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
             }
         }
         stage('Install dependencies') {
@@ -46,7 +43,7 @@ pipeline {
                         fileContentReplaceConfig( 
                             configs: [ fileContentReplaceItemConfig( 
                                 search: '__BUILD__', 
-                                replace: '${BUILD_ID}', 
+                                replace: '#${BUILD_ID}', 
                                 matchCount: 1) 
                             ], 
                             fileEncoding: 'UTF-8', 
