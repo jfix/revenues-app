@@ -20,8 +20,8 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                scmInfo = checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
-                echo "${scmInfo.GIT_COMMIT}"
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
+                echo GIT_SHA_SHORT=`git rev-parse --short=8 ${GIT_COMMIT}`
             }
         }
         stage('Install dependencies') {
