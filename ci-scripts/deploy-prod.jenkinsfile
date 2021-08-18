@@ -12,12 +12,6 @@ pipeline {
     triggers { 
         pollSCM('H/30 * * * *') 
     }
-    environment {
-        GIT_SHA_SHORT = sh(
-            script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
-            returnStdout: true
-        )
-    }
     parameters {
         string(name: 'DEPLOYMENT_PATH', defaultValue: '\\\\PAC-APP-1\\Applications\\revenues-app')
         booleanParam(name: 'dependenciesHaveChanged', defaultValue: false, description: 'manually set this param to true when dependencies have changes (otherwise node_modules will not be deployed)<br />not ideal, but it takes several minutes to copy the node_modules folder and most of the commit will not contain dependencies changes')
@@ -25,8 +19,10 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
-                echo GIT_SHA_SHORT
+                script {
+                    dev scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
+                    echo "${scmVars.GIT_COMMIT}"
+                }
             }
         }
         stage('Install dependencies') {
