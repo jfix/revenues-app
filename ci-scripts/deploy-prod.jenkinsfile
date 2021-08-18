@@ -20,7 +20,8 @@ pipeline {
     stages {
         stage('Git clone') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
+                scmInfo = checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[credentialsId: 'github-with-token-as-password', url: 'https://github.com/jfix/revenues-app']]])
+                echo "${scmInfo.GIT_COMMIT}"
             }
         }
         stage('Install dependencies') {
